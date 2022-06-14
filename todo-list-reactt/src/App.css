@@ -1,0 +1,55 @@
+* {
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-size: 100% 27%;
+  background-repeat: no-repeat;
+  background-image: url(./images/bg-mobile-dark.jpg);
+  background-color: hsl(235, 21%, 11%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.header > * {
+  margin: 45px 35px;
+}
+.header h1 {
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-weight: 700;
+  font-size: 2em;
+}
+.setLight {
+  width: 30px;
+  height: 30px;
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0px;
+  background-image: url(./images/icon-sun.svg);
+  justify-self: end;
+}
+
+.todoInput {
+  background-color: hsl(235, 24%, 19%);
+  background-repeat: no-repeat;
+  border: 0px;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 10px 20px;
+}
+.todoInput::placeholder {
+  padding-left: 30px;
+}
