@@ -6,28 +6,54 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: inherit;
+  margin-left: 10px;
+  font: inherit;
+
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.15em solid hsl(237, 14%, 26%);
+  border-radius: 1em;
+  transform: translateY(25%);
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  box-shadow: inset 1em 1em var(--form-control-color);
+  transform-origin: bottom left;
+  clip-path: url(./images/icon-check.svg);
+}
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
 .app {
   min-width: 100vw;
   min-height: 100vh;
-  background-size: 100% 27%;
+  background-size: 100% 40vh;
   background-repeat: no-repeat;
   background-image: url(./images/bg-mobile-dark.jpg);
   background-color: hsl(235, 21%, 11%);
   color: white;
-  display: flex;
   flex-direction: column;
 }
 .header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
+  padding: 60px 35px 40px;
 }
-.header > * {
-  margin: 45px 35px;
-}
+
 .header h1 {
   text-transform: uppercase;
-  letter-spacing: 10px;
+  letter-spacing: 13px;
   font-weight: 700;
   font-size: 2em;
 }
@@ -39,17 +65,37 @@
   background-position: center;
   border: 0px;
   background-image: url(./images/icon-sun.svg);
-  justify-self: end;
+  justify-self: right;
 }
 
-.todoInput {
+.new_todo,
+.new_todo_div {
   background-color: hsl(235, 24%, 19%);
   background-repeat: no-repeat;
   border: 0px;
-  border-radius: 4px;
-  padding: 20px;
-  margin: 10px 20px;
+  border-radius: 8px;
+  color: hsl(234, 11%, 52%);
+  padding: 15px;
 }
-.todoInput::placeholder {
-  padding-left: 30px;
+.todo_list,
+.new_todo_div {
+  width: 80%;
+}
+.new_todo,
+.todo_list_element {
+  display: inline;
+}
+.new_todo_div,
+.todo_list {
+  border-color: red;
+
+  margin: 20px auto;
+}
+
+.todo_div,
+.todo_list_element {
+  background-color: hsl(235, 24%, 19%);
+  background-repeat: no-repeat;
+  color: hsl(234, 11%, 52%);
+  padding: 15px;
 }

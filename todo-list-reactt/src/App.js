@@ -6,12 +6,12 @@ import TodoFilter from "./components/TodoFilter";
 
 function App() {
   const [todoList, setTodoList] = useState([
-    "Complete online JavaSCript course",
-    "Jog around the park 3x",
-    "10 minutes meditation",
-    "Read for 1 hour",
-    "Pick up groceries",
-    "Complete Todo App on Frontend Mentor",
+    // "Complete online JavaSCript course",
+    // "Jog around the park 3x",
+    // "10 minutes meditation",
+    // "Read for 1 hour",
+    // "Pick up groceries",
+    // "Complete Todo App on Frontend Mentor",
   ]);
 
   function inputHandler(e) {
@@ -30,7 +30,9 @@ function App() {
       </header>
 
       <NewTodo inputHandler={inputHandler} />
-      <TodoList todoList={todoList} />
+      <div className="todo_list">
+        <TodoList todoList={todoList} />
+      </div>
       <TodoFilter />
     </div>
   );
