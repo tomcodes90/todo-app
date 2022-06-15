@@ -1,4 +1,6 @@
 import "./App.css";
+import darkBackgroundDesktop from "./images/bg-desktop-dark.jpg";
+import sun from "./images/icon-sun.svg";
 import { useState } from "react";
 import NewTodo from "./components/NewTodo";
 import TodoList from "./components/TodoList";
@@ -25,32 +27,23 @@ function App() {
     }
   }
 
-  const removeTodo = (event) => {
-    const removedTodo = event.target.key;
-
-    if (!todoList.key.includes(removedTodo)) {
-      return;
-    }
-
-    setFilters([...todoList]);
-  };
-
   console.log(todoList);
 
   return (
-    <div className="app">
-      <header className="header">
-        <h1>Todo</h1>
-        <p className="setLight"></p>
-      </header>
-
-      <NewTodo inputHandler={inputHandler} />
-      <div className="todo_list">
-        <TodoList todoList={todoList} removeTodo={removeTodo} />
-        <TodoFilter />
+    <>
+      <div className="background-image">
+        <img src={darkBackgroundDesktop} />
       </div>
-      <p className="dragdrop">Drag and drop to reorder list</p>
-    </div>
+      <div className="container">
+        <header className="header">
+          <div className="title">Todo</div>
+          <div className="theme">
+            <img src={sun} />
+          </div>
+        </header>
+        <NewTodo />
+      </div>
+    </>
   );
 }
 

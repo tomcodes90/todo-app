@@ -1,149 +1,195 @@
 * {
-  font-size: 15px;
-  font-family: "Josefin Sans", sans-serif;
-  outline: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-input[type="checkbox"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: inherit;
-  margin-left: 10px;
-  font: inherit;
-  width: 1.5em;
-  height: 1.5em;
-  border: 0.15em solid hsl(237, 14%, 26%);
-  border-radius: 1em;
-  transform: translateY(-5%);
-}
-
-input[type="checkbox"]::before {
-  content: "";
-  width: 0.65em;
-  height: 0.65em;
-  transform: scale(0);
-  box-shadow: inset 1em 1em var(--form-control-color);
-  transform-origin: bottom left;
-  clip-path: url(./images/icon-check.svg);
-}
-input[type="checkbox"]:checked::before {
-  transform: scale(1);
-}
-
-.app {
-  min-width: 100vw;
-  min-height: 100vh;
-  background-size: 100% 40vh;
-  background-repeat: no-repeat;
-  background-image: url(./images/bg-mobile-dark.jpg);
+body {
+  font-family: "Josefin Sans", sans-serif;
   background-color: hsl(235, 21%, 11%);
-  color: white;
-  flex-direction: column;
-}
-.header {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  padding: 60px 35px 40px;
-}
-
-.header h1 {
-  text-transform: uppercase;
-  letter-spacing: 13px;
-  font-weight: 700;
-  font-size: 2em;
-}
-.setLight {
-  width: 30px;
-  height: 30px;
-  background-color: inherit;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: 0px;
-  background-image: url(./images/icon-sun.svg);
-  justify-self: right;
-}
-
-.new_todo,
-.new_todo_div {
-  background-color: hsl(235, 24%, 19%);
-  background-repeat: no-repeat;
-  border: 0px;
-  border-radius: 8px;
-  color: hsl(234, 11%, 52%);
-  padding: 15px;
-}
-
-.todo_list,
-.new_todo_div {
-  width: 80%;
-}
-.new_todo,
-.todo_list_element,
-.remove_icon {
-  display: inline;
-}
-
-.new_todo_div,
-.todo_list {
-  margin: 20px auto;
-}
-
-.todo_div,
-.todo_list_element {
-  background-color: hsl(235, 24%, 19%);
-  background-repeat: no-repeat;
-  color: white;
-  padding: 15px;
-}
-.new_todo_div,
-.todo_div {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  font-weight: 400;
-}
-.todo_div > *,
-.new_todo_div > * {
-  cursor: pointer;
-}
-.status_and_clear {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid hsl(233, 14%, 35%);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  color: hsl(233, 14%, 35%);
-  font-weight: 400;
-}
-.clear {
-  justify-self: end;
-}
-
-.filters {
+  font-size: 18px;
   display: flex;
   justify-content: center;
-  gap: 15px;
-  font-weight: 700;
-  margin: 20px auto;
 }
 
-.dragdrop {
-  color: hsl(234, 11%, 52%);
-  font-size: 1em;
-  padding: 30px;
-  text-align: center;
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-height: 20vh;
+  z-index: -1;
 }
-.remove_icon {
-  background-image: url(./images/icon-cross.svg);
-  background-size: 15px 15px;
-  background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
-  margin-left: auto;
-  padding: 0px 5px;
+
+.background-image img {
+  width: 100%;
+  object-fit: cover;
+  min-height: 40vh;
+  object-position: left;
+}
+
+.container {
+  width: 80vw;
+  margin: 0px 30px;
+  margin-top: 100px;
+  text-transform: uppercase;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: white;
+  letter-spacing: 10px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.new-todo {
+  width: 100%;
+  height: 70px;
+  background-color: hsl(235, 24%, 19%);
+  margin-top: 50px;
+  border-radius: 6px;
+  display: flex;
+}
+
+.check {
+  flex-basis: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid hsl(237, 14%, 26%);
+  transition: all 0.25s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-mark img {
+  visibility: hidden;
+}
+
+.check-mark.checked img,
+.check-mark:hover img {
+  visibility: visible;
+}
+
+.check-mark:hover {
+  border-color: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+  background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+}
+
+.check-mark.checked {
+  background-color: pink;
+  background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+}
+
+.todo-text.checked {
+  text-decoration: line-through;
+  color: hsl(233, 14%, 35%);
+}
+
+.new-todo-input {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.new-todo-input input {
+  width: 100%;
+  padding: 10px 0px;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: hsl(234, 39%, 85%);
+}
+
+.new-todo-input form {
+  flex-grow: 1;
+  display: flex;
+}
+
+.new-todo-input input::placeholder {
+  color: hsl(233, 14%, 35%);
+}
+
+.todo-text {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: hsl(234, 39%, 85%);
+}
+
+.todo-item {
+  width: 100%;
+  height: 70px;
+  background-color: hsl(235, 24%, 19%);
+  display: flex;
+  border-bottom: 1px solid hsl(237, 14%, 26%);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  transition-property: box-shadow, transform, border-color;
+}
+
+.todo-items-wrapper {
+  margin-top: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: hsl(235, 24%, 19%);
+  box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.4);
+  margin-bottom: 30px;
+}
+
+.todo-items-info {
+  width: 100%;
+  height: 70px;
+  background-color: hsl(235, 24%, 19%);
+  display: flex;
+  align-items: center;
+  color: hsl(233, 14%, 35%);
+  padding-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+
+.items-statuses {
+  display: flex;
+  justify-content: center;
+}
+
+.items-statuses span {
+  padding: 0 4px;
+  cursor: pointer;
+}
+
+.items-clear {
+  cursor: pointer;
+  text-align: end;
+}
+
+.items-statuses span:hover,
+.items-clear:hover {
+  color: hsl(220, 98%, 61%);
+}
+
+.items-statuses .active {
+  color: hsl(220, 98%, 61%);
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0px 7px 0px hsl(235, 21%, 11%);
+  border-color: hsl(235, 24%, 19%);
 }
