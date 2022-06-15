@@ -6,19 +6,34 @@ import TodoFilter from "./components/TodoFilter";
 
 function App() {
   const [todoList, setTodoList] = useState([
-    // "Complete online JavaSCript course",
-    // "Jog around the park 3x",
-    // "10 minutes meditation",
-    // "Read for 1 hour",
-    // "Pick up groceries",
-    // "Complete Todo App on Frontend Mentor",
+    {
+      id: 1,
+      value: "Become a web developer",
+    },
+    {
+      id: 2,
+      value: "Clean the House",
+    },
   ]);
 
   function inputHandler(e) {
-    const userInput = e.target.value;
-    setTodoList([...todoList, userInput]);
-    console.log(todoList);
+    e.preventDefault();
+    const todoValue = e.target.value;
+    const todoId = Math.floor(Math.random() * 100);
+    if (todoValue.length > 0) {
+      setTodoList([...todoList, { id: todoId, value: todoValue }]);
+    }
   }
+
+  const removeTodo = (event) => {
+    const removedTodo = event.target.key;
+
+    if (!todoList.key.includes(removedTodo)) {
+      return;
+    }
+
+    setFilters([...todoList]);
+  };
 
   console.log(todoList);
 
@@ -31,9 +46,10 @@ function App() {
 
       <NewTodo inputHandler={inputHandler} />
       <div className="todo_list">
-        <TodoList todoList={todoList} />
+        <TodoList todoList={todoList} removeTodo={removeTodo} />
+        <TodoFilter />
       </div>
-      <TodoFilter />
+      <p className="dragdrop">Drag and drop to reorder list</p>
     </div>
   );
 }

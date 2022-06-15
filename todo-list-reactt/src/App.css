@@ -1,5 +1,5 @@
 * {
-  font-size: 18px;
+  font-size: 15px;
   font-family: "Josefin Sans", sans-serif;
   outline: none;
   margin: 0;
@@ -13,12 +13,11 @@ input[type="checkbox"] {
   background-color: inherit;
   margin-left: 10px;
   font: inherit;
-
   width: 1.5em;
   height: 1.5em;
   border: 0.15em solid hsl(237, 14%, 26%);
   border-radius: 1em;
-  transform: translateY(25%);
+  transform: translateY(-5%);
 }
 
 input[type="checkbox"]::before {
@@ -77,18 +76,19 @@ input[type="checkbox"]:checked::before {
   color: hsl(234, 11%, 52%);
   padding: 15px;
 }
+
 .todo_list,
 .new_todo_div {
   width: 80%;
 }
 .new_todo,
-.todo_list_element {
+.todo_list_element,
+.remove_icon {
   display: inline;
 }
+
 .new_todo_div,
 .todo_list {
-  border-color: red;
-
   margin: 20px auto;
 }
 
@@ -96,6 +96,54 @@ input[type="checkbox"]:checked::before {
 .todo_list_element {
   background-color: hsl(235, 24%, 19%);
   background-repeat: no-repeat;
-  color: hsl(234, 11%, 52%);
+  color: white;
   padding: 15px;
+}
+.new_todo_div,
+.todo_div {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  font-weight: 400;
+}
+.todo_div > *,
+.new_todo_div > * {
+  cursor: pointer;
+}
+.status_and_clear {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid hsl(233, 14%, 35%);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: hsl(233, 14%, 35%);
+  font-weight: 400;
+}
+.clear {
+  justify-self: end;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-weight: 700;
+  margin: 20px auto;
+}
+
+.dragdrop {
+  color: hsl(234, 11%, 52%);
+  font-size: 1em;
+  padding: 30px;
+  text-align: center;
+}
+.remove_icon {
+  background-image: url(./images/icon-cross.svg);
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  padding: 0px 5px;
 }
