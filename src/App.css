@@ -10,6 +10,7 @@ body {
   font-size: 18px;
   display: flex;
   justify-content: center;
+  min-width: 400px;
 }
 
 .background-image {
@@ -212,8 +213,50 @@ body {
   box-shadow: 0 0px 7px 0px hsl(235, 21%, 11%);
   border-color: hsl(235, 24%, 19%);
 }
+
+.todo-items-wrapper .todo-items-info {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
+<<<<<<< HEAD
   body {
     font-size: 0.8em;
+=======
+  * {
+    font-size: 18px;
+  }
+
+  #root {
+    min-width: 400px;
+  }
+
+  .todo-items-info .items-left {
+    display: none;
+  }
+
+  .todo-items-info .items-status {
+    flex: 1;
+  }
+
+  .todo-items-info .items-clear {
+    display: none;
+  }
+
+  .todo-items-wrapper .todo-items-info {
+    display: flex;
+  }
+
+  .todo-items-wrapper .todo-items-info .items-left {
+    display: flex;
+  }
+
+  .todo-items-wrapper .todo-items-info .items-status {
+    display: none;
+  }
+
+  .todo-items-wrapper .todo-items-info .items-clear {
+    display: flex;
+>>>>>>> JST-refactor-20220616
   }
 }
