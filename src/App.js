@@ -73,7 +73,7 @@ function App() {
   return (
     <>
       <div className="background-image">
-        <img src={darkBackgroundDesktop} />
+        <img src={darkBackgroundDesktop} alt="background" />
       </div>
       <div className="container">
         <Header sun={sun} />
