@@ -1,4 +1,5 @@
 import TodoListItems from "./TodoListItems";
+import TodoFilter from "./TodoFilter";
 
 function TodoList({ checkMark, removeIcon, todoList, removeTodo }) {
   return (
@@ -10,6 +11,7 @@ function TodoList({ checkMark, removeIcon, todoList, removeTodo }) {
           todoList={todoList}
           removeTodo={removeTodo}
         />
+        <TodoFilter todoList={todoList} />
       </div>
     </div>
   );

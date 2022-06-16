@@ -27,10 +27,7 @@ function App() {
     },
   ]);
 
-  function inputHandler(e) {
-    e.preventDefault();
-
-    const todoValue = e.target.children[0].value;
+  function handleAddTodo(todoValue) {
     const todoId = Math.floor(Math.random() * 100000000000);
 
     if (todoValue !== "") {
@@ -40,32 +37,15 @@ function App() {
       ]);
     }
   }
-  function inputHandlerOnClick(e) {
-    e.preventDefault();
 
-    const todoValue = e.nativeEvent.path[2].lastChild.firstChild[0].value;
-    const todoId = Math.floor(Math.random() * 100000000000);
-
-    if (todoValue !== "") {
-      setTodoList([
-        ...todoList,
-        { id: todoId, value: todoValue, status: "active" },
-      ]);
-    }
-  }
-  function removeTodo(e) {
-    const removedTodoId = e.nativeEvent.path[3].id;
-
+  function removeTodo(removedTodoId) {
     const filteredTodoList = todoList.filter(
-      (todo) => todo.id != removedTodoId
+      (todo) => todo.id !== removedTodoId
     );
-
-    console.log(e);
-    console.log(removedTodoId);
-    console.log(filteredTodoList);
 
     setTodoList(filteredTodoList);
   }
+
   function clearTodoList() {
     setTodoList([]);
   }
@@ -78,8 +58,7 @@ function App() {
       <div className="container">
         <Header sun={sun} />
         <NewTodo
-          inputHandler={inputHandler}
-          inputHandlerOnClick={inputHandlerOnClick}
+          onAddTodo={handleAddTodo}
         />
         <TodoList
           todoList={todoList}
