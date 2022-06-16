@@ -2,7 +2,7 @@ import "./App.css";
 
 import darkBackgroundDesktop from "./images/bg-desktop-dark.jpg";
 import sun from "./images/icon-sun.svg";
-import moon from "./images/icon-moon.svg";
+// import moon from "./images/icon-moon.svg";
 import checkMark from "./images/icon-check.svg";
 import removeIcon from "./images/icon-cross.svg";
 
@@ -26,8 +26,8 @@ function App() {
       status: "to do",
     },
   ]);
-  const [filterTodos, setFilterTodos] = useState([]);
-  const [filters, setFilters] = useState([]);
+  const [filteredTodoList, setFilteredTodoList] = useState("");
+  const [filtered, setFiltered] = useState(false);
   function handleAddTodo(todoValue) {
     const todoId = Math.floor(Math.random() * 100000000000);
 
@@ -55,33 +55,18 @@ function App() {
     console.log(list);
   }
   function removeTodo(removedTodoId) {
-    const filteredTodoList = todoList.filter(
-      (todo) => todo.id !== removedTodoId
-    );
+    const filteredTodos = todoList.filter((todo) => todo.id !== removedTodoId);
 
-    setTodoList(filteredTodoList);
+    setTodoList(filteredTodos);
   }
-  function filterTodoList(e) {
-    const name = e.target.id;
-    if (name === "all") {
-      const allTodos = todoList.filter(
-        (todo) => todo.status === "completed" || todo.status === "to do"
-      );
-
-      setTodoList(allTodos);
-    } else if (name === "active") {
-      const activeTodos = todoList.filter((todo) => todo.status === "to do");
-
-      setTodoList(activeTodos);
-    } else {
-      const completedTodos = todoList.filter(
-        (todo) => todo.status === "completed"
-      );
-      setTodoList(completedTodos);
-    }
-    console.log(e);
+  function filterTodoList(status) {
+    const filteredTodos = todoList.filter((todo) => todo.status === status);
+    setFilteredTodoList(filteredTodos);
+    setFiltered(true);
   }
-
+  function clearFilteredTodoList() {
+    setFiltered(false);
+  }
   function clearTodoList() {
     setTodoList([]);
   }
@@ -95,16 +80,22 @@ function App() {
         <Header sun={sun} />
         <NewTodo onAddTodo={handleAddTodo} />
         <TodoList
-          todoList={todoList}
+          todoCounter={todoList.length}
+          todoList={filtered ? filteredTodoList : todoList}
           removeIcon={removeIcon}
           checkMark={checkMark}
           changeTodoStatus={changeTodoStatus}
           removeTodo={removeTodo}
-        />
-        <TodoFilter
-          todoList={todoList}
           filterTodoList={filterTodoList}
           clearTodoList={clearTodoList}
+          clearFilteredTodoList={clearFilteredTodoList}
+        />
+        <TodoFilter
+          todoCounter={todoList.length}
+          todoList={filtered ? filteredTodoList : todoList}
+          filterTodoList={filterTodoList}
+          clearTodoList={clearTodoList}
+          clearFilteredTodoList={clearFilteredTodoList}
         />
         <p> Drag and drop to reorder list</p>
       </div>

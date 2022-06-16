@@ -6,6 +6,10 @@ function TodoList({
   removeIcon,
   changeTodoStatus,
   todoList,
+  todoCounter,
+  filterTodoList,
+  clearTodoList,
+  clearFilteredTodoList,
   removeTodo,
 }) {
   return (
@@ -18,7 +22,13 @@ function TodoList({
           todoList={todoList}
           removeTodo={removeTodo}
         />
-        <TodoFilter todoList={todoList} />
+        <TodoFilter
+          todoCounter={todoList.length}
+          todoList={todoList}
+          filterTodoList={filterTodoList}
+          clearTodoList={clearTodoList}
+          clearFilteredTodoList={clearFilteredTodoList}
+        />
       </div>
     </div>
   );
