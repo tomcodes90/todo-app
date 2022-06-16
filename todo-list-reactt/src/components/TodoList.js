@@ -1,15 +1,18 @@
-function TodoList({ todoList, removeTodo }) {
-  return todoList.map((todo) => {
-    return (
-      <div className="todo_div">
-        <input type="checkbox" />
-        <p key={todo.id} onClick={removeTodo} className="todo_list_element">
-          {todo.value}
-        </p>
-        <label className="remove_icon"></label>
+import TodoListItems from "./TodoListItems";
+
+function TodoList({ checkMark, removeIcon, todoList, removeTodo }) {
+  return (
+    <div className="todo-items-wrapper">
+      <div className="todo-items">
+        <TodoListItems
+          checkMark={checkMark}
+          removeIcon={removeIcon}
+          todoList={todoList}
+          removeTodo={removeTodo}
+        />
       </div>
-    );
-  });
+    </div>
+  );
 }
 
 export default TodoList;

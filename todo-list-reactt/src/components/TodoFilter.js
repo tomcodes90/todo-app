@@ -1,18 +1,16 @@
-function TodoFilter() {
+function TodoFilter({ todoList, clearTodoList }) {
   return (
-    <>
-      <div className="todo_div status_and_clear">
-        <p onClick=""> 5 items left</p>
-        <p className="clear" onClick="">
-          Clear Completed
-        </p>
+    <div className="todo-items-info">
+      <div className="items-left">{todoList.length} items left</div>
+      <div className="items-status">
+        <span>All</span>
+        <span>Active</span>
+        <span>Completed</span>
       </div>
-      <div className="todo_div filters">
-        <p>All</p>
-        <p>Active</p>
-        <p>Completed</p>
+      <div className="items-clear">
+        <span onClick={clearTodoList}>Clear Completed</span>
       </div>
-    </>
+    </div>
   );
 }
 
