@@ -26,24 +26,60 @@ function App() {
       status: "to do",
     },
   ]);
-
+  const [filterTodos, setFilterTodos] = useState([]);
+  const [filters, setFilters] = useState([]);
   function handleAddTodo(todoValue) {
     const todoId = Math.floor(Math.random() * 100000000000);
 
     if (todoValue !== "") {
       setTodoList([
         ...todoList,
-        { id: todoId, value: todoValue, status: "active" },
+        { id: todoId, value: todoValue, status: "to do" },
       ]);
     }
   }
-
+  function changeTodoStatus(completedTodoId) {
+    const list = [];
+    todoList.forEach((todo) => {
+      if (todo.id === completedTodoId) {
+        if (todo.status === "to do") {
+          todo.status = "completed";
+        } else {
+          todo.status = "to do";
+        }
+      }
+      list.push(todo);
+      return setTodoList(list);
+    });
+    console.log(todoList);
+    console.log(list);
+  }
   function removeTodo(removedTodoId) {
     const filteredTodoList = todoList.filter(
       (todo) => todo.id !== removedTodoId
     );
 
     setTodoList(filteredTodoList);
+  }
+  function filterTodoList(e) {
+    const name = e.target.id;
+    if (name === "all") {
+      const allTodos = todoList.filter(
+        (todo) => todo.status === "completed" || todo.status === "to do"
+      );
+
+      setTodoList(allTodos);
+    } else if (name === "active") {
+      const activeTodos = todoList.filter((todo) => todo.status === "to do");
+
+      setTodoList(activeTodos);
+    } else {
+      const completedTodos = todoList.filter(
+        (todo) => todo.status === "completed"
+      );
+      setTodoList(completedTodos);
+    }
+    console.log(e);
   }
 
   function clearTodoList() {
@@ -57,16 +93,19 @@ function App() {
       </div>
       <div className="container">
         <Header sun={sun} />
-        <NewTodo
-          onAddTodo={handleAddTodo}
-        />
+        <NewTodo onAddTodo={handleAddTodo} />
         <TodoList
           todoList={todoList}
           removeIcon={removeIcon}
           checkMark={checkMark}
+          changeTodoStatus={changeTodoStatus}
           removeTodo={removeTodo}
         />
-        <TodoFilter todoList={todoList} clearTodoList={clearTodoList} />
+        <TodoFilter
+          todoList={todoList}
+          filterTodoList={filterTodoList}
+          clearTodoList={clearTodoList}
+        />
         <p> Drag and drop to reorder list</p>
       </div>
     </>
