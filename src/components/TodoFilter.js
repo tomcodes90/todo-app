@@ -1,5 +1,4 @@
 function TodoFilter({
-  todoList,
   filterTodoList,
   clearFilteredTodoList,
   clearTodoList,
@@ -9,9 +8,7 @@ function TodoFilter({
     <div className="todo-items-info">
       <p className="items-left">{todoCounter} items left</p>
       <div className="items-status">
-        <span id="all" onClick={clearFilteredTodoList}>
-          All
-        </span>
+        <span onClick={clearFilteredTodoList}>All</span>
         <span id="active" onClick={() => filterTodoList("to do")}>
           Active
         </span>

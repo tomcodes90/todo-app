@@ -1,13 +1,4 @@
-import { useEffect } from "react";
-
-function TodoListItems({
-  checkMark,
-  removeIcon,
-  changeTodoStatus,
-  todoList,
-
-  removeTodo,
-}) {
+function TodoListItems({ removeIcon, changeTodoStatus, todoList, removeTodo }) {
   return todoList.map(
     (todo) => {
       return (

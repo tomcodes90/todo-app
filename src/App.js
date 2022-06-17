@@ -28,6 +28,7 @@ function App() {
   ]);
   const [filteredTodoList, setFilteredTodoList] = useState("");
   const [filtered, setFiltered] = useState(false);
+
   function handleAddTodo(todoValue) {
     const todoId = Math.floor(Math.random() * 100000000000);
 
