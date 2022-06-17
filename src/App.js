@@ -3,7 +3,7 @@ import "./App.css";
 import darkBackgroundDesktop from "./images/bg-desktop-dark.jpg";
 import sun from "./images/icon-sun.svg";
 // import moon from "./images/icon-moon.svg";
-import checkMark from "./images/icon-check.svg";
+
 import removeIcon from "./images/icon-cross.svg";
 
 import Header from "./components/Header";
@@ -51,8 +51,6 @@ function App() {
       list.push(todo);
       return setTodoList(list);
     });
-    console.log(todoList);
-    console.log(list);
   }
   function removeTodo(removedTodoId) {
     const filteredTodos = todoList.filter((todo) => todo.id !== removedTodoId);
@@ -68,7 +66,10 @@ function App() {
     setFiltered(false);
   }
   function clearTodoList() {
-    setTodoList([]);
+    const filteredTodos = todoList.filter(
+      (todo) => todo.status !== "completed"
+    );
+    setTodoList(filteredTodos);
   }
 
   return (
@@ -83,7 +84,6 @@ function App() {
           todoCounter={todoList.length}
           todoList={filtered ? filteredTodoList : todoList}
           removeIcon={removeIcon}
-          checkMark={checkMark}
           changeTodoStatus={changeTodoStatus}
           removeTodo={removeTodo}
           filterTodoList={filterTodoList}
@@ -97,8 +97,8 @@ function App() {
           clearTodoList={clearTodoList}
           clearFilteredTodoList={clearFilteredTodoList}
         />
-        <p> Drag and drop to reorder list</p>
       </div>
+      <p className="info"> Drag and drop to reorder list</p>
     </>
   );
 }

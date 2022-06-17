@@ -7,7 +7,7 @@ function TodoFilter({
 }) {
   return (
     <div className="todo-items-info">
-      <div className="items-left">{todoCounter} items left</div>
+      <p className="items-left">{todoCounter} items left</p>
       <div className="items-status">
         <span id="all" onClick={clearFilteredTodoList}>
           All
@@ -19,9 +19,9 @@ function TodoFilter({
           Completed
         </span>
       </div>
-      <div className="items-clear">
-        <span onClick={clearTodoList}>Clear Completed</span>
-      </div>
+      <p className="items-clear" onClick={clearTodoList}>
+        Clear Completed
+      </p>
     </div>
   );
 }

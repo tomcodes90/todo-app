@@ -2,11 +2,9 @@ import TodoListItems from "./TodoListItems";
 import TodoFilter from "./TodoFilter";
 
 function TodoList({
-  checkMark,
   removeIcon,
   changeTodoStatus,
   todoList,
-  todoCounter,
   filterTodoList,
   clearTodoList,
   clearFilteredTodoList,
@@ -16,7 +14,6 @@ function TodoList({
     <div className="todo-items-wrapper">
       <div className="todo-items">
         <TodoListItems
-          checkMark={checkMark}
           removeIcon={removeIcon}
           changeTodoStatus={changeTodoStatus}
           todoList={todoList}
