@@ -1,4 +1,4 @@
-import TodoListItems from "./TodoListItems";
+import TodoListItem from "./TodoListItem";
 import TodoFilter from "./TodoFilter";
 
 function TodoList({
@@ -13,12 +13,18 @@ function TodoList({
   return (
     <div className="todo-items-wrapper">
       <div className="todo-items">
-        <TodoListItems
-          removeIcon={removeIcon}
-          changeTodoStatus={changeTodoStatus}
-          todoList={todoList}
-          removeTodo={removeTodo}
-        />
+        {todoList.map((todo) => {
+          return (
+            <TodoListItem
+              todo={todo}
+              removeIcon={removeIcon}
+              changeTodoStatus={changeTodoStatus}
+              todoList={todoList}
+              removeTodo={removeTodo}
+            />
+          );
+        })}
+
         <TodoFilter
           todoCounter={todoList.length}
           todoList={todoList}
