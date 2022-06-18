@@ -1,9 +1,13 @@
-function Header({ sun }) {
+function Header({ sun, moon, theme, selectTheme }) {
   return (
     <header className="header">
-      <div className="title">Todo</div>
+      <h1 className="title">Todo</h1>
       <div className="theme">
-        <img src={sun} alt="sun icon" />
+        <img
+          onClick={selectTheme}
+          src={theme === "dark" ? sun : moon}
+          alt="sun icon"
+        />
       </div>
     </header>
   );

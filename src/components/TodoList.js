@@ -9,6 +9,7 @@ function TodoList({
   clearTodoList,
   clearFilteredTodoList,
   removeTodo,
+  theme,
 }) {
   return (
     <div className="todo-items-wrapper">
@@ -21,11 +22,13 @@ function TodoList({
               changeTodoStatus={changeTodoStatus}
               todoList={todoList}
               removeTodo={removeTodo}
+              theme={theme}
             />
           );
         })}
 
         <TodoFilter
+          theme={theme}
           todoCounter={todoList.length}
           todoList={todoList}
           filterTodoList={filterTodoList}

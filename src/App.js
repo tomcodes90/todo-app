@@ -1,8 +1,7 @@
 import "./App.css";
 
-import darkBackgroundDesktop from "./images/bg-desktop-dark.jpg";
 import sun from "./images/icon-sun.svg";
-// import moon from "./images/icon-moon.svg";
+import moon from "./images/icon-moon.svg";
 
 import removeIcon from "./images/icon-cross.svg";
 
@@ -14,6 +13,7 @@ import TodoFilter from "./components/TodoFilter";
 import { useState } from "react";
 
 function App() {
+  const [theme, setTheme] = useState("dark");
   const [todoList, setTodoList] = useState([
     {
       id: 1,
@@ -28,6 +28,15 @@ function App() {
   ]);
   const [filteredTodoList, setFilteredTodoList] = useState("");
   const [filtered, setFiltered] = useState(false);
+
+  function selectTheme() {
+    if (theme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+    console.log(theme);
+  }
 
   function handleAddTodo(todoValue) {
     const todoId = Math.floor(Math.random() * 100000000000);
@@ -70,17 +79,15 @@ function App() {
     const filteredTodos = todoList.filter(
       (todo) => todo.status !== "completed"
     );
+
     setTodoList(filteredTodos);
   }
 
   return (
-    <>
-      <div className="background-image">
-        <img src={darkBackgroundDesktop} alt="background" />
-      </div>
+    <div className={theme === "dark" ? "main" : "main light"}>
       <div className="container">
-        <Header sun={sun} />
-        <NewTodo onAddTodo={handleAddTodo} />
+        <Header sun={sun} moon={moon} theme={theme} selectTheme={selectTheme} />
+        <NewTodo onAddTodo={handleAddTodo} theme={theme} />
         <TodoList
           todoCounter={todoList.length}
           todoList={filtered ? filteredTodoList : todoList}
@@ -90,6 +97,7 @@ function App() {
           filterTodoList={filterTodoList}
           clearTodoList={clearTodoList}
           clearFilteredTodoList={clearFilteredTodoList}
+          theme={theme}
         />
         <TodoFilter
           todoCounter={todoList.length}
@@ -97,10 +105,11 @@ function App() {
           filterTodoList={filterTodoList}
           clearTodoList={clearTodoList}
           clearFilteredTodoList={clearFilteredTodoList}
+          theme={theme}
         />
+        <p className="info"> Drag and drop to reorder list</p>
       </div>
-      <p className="info"> Drag and drop to reorder list</p>
-    </>
+    </div>
   );
 }
 

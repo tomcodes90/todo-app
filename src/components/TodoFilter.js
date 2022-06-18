@@ -3,9 +3,12 @@ function TodoFilter({
   clearFilteredTodoList,
   clearTodoList,
   todoCounter,
+  theme,
 }) {
   return (
-    <div className="todo-items-info">
+    <div
+      className={theme === "dark" ? "todo-items-info" : "todo-items-info light"}
+    >
       <p className="items-left">{todoCounter} items left</p>
       <div className="items-status">
         <span onClick={clearFilteredTodoList}>All</span>

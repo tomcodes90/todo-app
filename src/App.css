@@ -3,36 +3,26 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
 }
 
-body {
+.main {
+  background-image: url(./images/bg-desktop-dark.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 35vh;
   background-color: hsl(235, 21%, 11%);
-  font-size: 18px;
   display: flex;
   justify-content: center;
+  height: 100vh;
   min-width: 400px;
 }
-
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  max-height: 20vh;
-  z-index: -1;
-}
-
-.background-image img {
-  width: 100%;
-  object-fit: cover;
-  min-height: 40vh;
-  object-position: left;
+.main.light {
+  background-image: url(./images/bg-desktop-light.jpg);
+  background-color: white;
 }
 
 .container {
-  width: 80vw;
-  margin: 0px 30px;
-  margin-top: 100px;
+  margin-top: 75px;
 }
 
 .header {
@@ -48,7 +38,7 @@ body {
 .title {
   color: white;
   letter-spacing: 10px;
-  font-size: 50px;
+  font-size: 2em;
   font-weight: bold;
 }
 
@@ -60,9 +50,12 @@ body {
   border-radius: 6px;
   display: flex;
 }
+.new-todo.light {
+  background-color: white;
+}
 
 .check {
-  flex-basis: 90px;
+  flex-basis: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +71,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.check-mark.light {
+  border: 2px solid hsl(236, 33%, 92%);
 }
 .check-mark-checked {
   width: 30px;
@@ -125,7 +121,9 @@ body {
 .todo-remove-icon:hover {
   background-color: rgba(192, 88, 243);
 }
-
+.todo-remove-icon.light:hover {
+  background-color: rgba(85, 221, 255);
+}
 .check-mark img {
   visibility: hidden;
 }
@@ -142,6 +140,11 @@ body {
   border: 2px solid transparent;
   border-radius: 50%;
 }
+.check-mark.light:hover {
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, rgba(85, 221, 255) 0%, rgba(192, 88, 243) 100%)
+      border-box;
+}
 
 .new-todo-input {
   flex-grow: 1;
@@ -149,7 +152,7 @@ body {
   align-items: center;
 }
 
-.new-todo-input input {
+.new-todo-input-text {
   width: 100%;
   padding: 10px 0px;
   font-size: 18px;
@@ -157,6 +160,9 @@ body {
   border: none;
   outline: none;
   color: hsl(234, 39%, 85%);
+}
+.new-todo-input-text.light {
+  color: hsl(235, 19%, 35%);
 }
 
 .new-todo-input form {
@@ -166,13 +172,17 @@ body {
 
 .new-todo-input input::placeholder {
   color: hsl(233, 14%, 35%);
+  font-size: 18px;
 }
 
 .todo-text {
   display: flex;
   align-items: center;
   font-size: 0.9em;
-  color: white;
+  color: hsl(234, 39%, 85%);
+}
+.todo-text.light {
+  color: hsl(235, 19%, 35%);
 }
 .todo-text-checked {
   display: flex;
@@ -191,6 +201,10 @@ body {
   cursor: pointer;
   transition: all 0.25s ease;
   transition-property: box-shadow, transform, border-color;
+}
+.todo-item.light {
+  background-color: white;
+  border-bottom: 1px solid hsl(236, 33%, 92%);
 }
 
 .todo-items-wrapper {
@@ -212,18 +226,22 @@ body {
   display: flex;
   justify-content: space-between;
   padding-right: 30px;
-  border-radius: 6px;
   font-size: 1em;
+  overflow: hidden;
+}
+.todo-items-info.light {
+  background-color: white;
 }
 
 .items-status {
   display: flex;
   justify-content: center;
+  padding: 0px 20px;
 }
 
 .items-status span {
-  padding: 0 8px;
   cursor: pointer;
+  padding: 0px 8px;
 }
 
 .items-clear {
@@ -241,14 +259,16 @@ body {
 }
 
 .todo-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: 0 0px 7px 0px hsl(235, 21%, 11%);
   border-color: hsl(235, 24%, 19%);
 }
-
-.todo-items-wrapper .todo-items-info {
-  display: none;
+.todo-item.light:hover {
+  transform: none;
+  box-shadow: 0 0px 7px 0px hsl(236, 29%, 84%);
+  border-color: hsl(236, 33%, 92%);
 }
+
 .info {
   text-align: center;
   padding: 30px 0px;
@@ -256,12 +276,17 @@ body {
   color: hsl(233, 14%, 35%);
 }
 @media only screen and (max-width: 700px) {
-  * {
-    font-size: 18px;
-  }
-
   #root {
     min-width: 400px;
+  }
+
+  .main {
+    background-image: url(./images/bg-mobile-dark.jpg);
+    background-size: 100vw 40vh;
+    height: 100%;
+  }
+  .main.light {
+    background-image: url(./images/bg-mobile-light.jpg);
   }
 
   .todo-items-info .items-left {
