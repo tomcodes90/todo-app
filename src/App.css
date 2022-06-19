@@ -12,10 +12,12 @@
   background-size: 100% 35vh;
   background-color: hsl(235, 21%, 11%);
   display: flex;
+  min-height: 100vh;
+  width: 100%;
   justify-content: center;
-  height: 100vh;
   min-width: 400px;
 }
+
 .main.light {
   background-image: url(./images/bg-desktop-light.jpg);
   background-color: white;
@@ -222,12 +224,27 @@
   background-color: hsl(235, 24%, 19%);
   align-items: center;
   color: hsl(233, 14%, 35%);
-  padding-left: 30px;
+  padding: 0px 25px;
   display: flex;
   justify-content: space-between;
-  padding-right: 30px;
-  font-size: 1em;
   overflow: hidden;
+}
+.todo-items-info > * {
+  font-size: 0.8em;
+}
+.items-left {
+  padding-right: 60px;
+}
+.items-clear {
+  padding-left: 60px;
+}
+.items-status > * {
+  padding: 0px 6px;
+  font-size: 1em;
+  cursor: pointer;
+}
+div:last-child .mobile-todo-info {
+  display: none;
 }
 .todo-items-info.light {
   background-color: white;
@@ -279,16 +296,28 @@
   #root {
     min-width: 400px;
   }
-
+  .info {
+    height: max-content;
+  }
   .main {
     background-image: url(./images/bg-mobile-dark.jpg);
     background-size: 100vw 40vh;
-    height: 100%;
   }
   .main.light {
     background-image: url(./images/bg-mobile-light.jpg);
   }
-
+  div:last-child .mobile-todo-info {
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.4);
+  }
+  .items-status > * {
+    font-weight: 700;
+  }
+  .items-left {
+    padding-right: 150px;
+  }
   .todo-items-info .items-left {
     display: none;
   }

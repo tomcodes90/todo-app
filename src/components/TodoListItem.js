@@ -1,3 +1,5 @@
+import { useDrag } from "react-dnd";
+
 function TodoListItem({
   removeIcon,
   changeTodoStatus,
@@ -5,10 +7,20 @@ function TodoListItem({
   removeTodo,
   theme,
 }) {
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "div",
+    item: { id: todo.id },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
   return (
     <div
+      ref={drag}
       key={todo.id}
       className={theme === "dark" ? "todo-item" : "todo-item light"}
+      style={{ display: isDragging ? "none" : "flex" }}
     >
       <div onClick={() => changeTodoStatus(todo.id)} className="check">
         <div

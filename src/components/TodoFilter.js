@@ -11,13 +11,13 @@ function TodoFilter({
     >
       <p className="items-left">{todoCounter} items left</p>
       <div className="items-status">
-        <span onClick={clearFilteredTodoList}>All</span>
-        <span id="active" onClick={() => filterTodoList("to do")}>
+        <p onClick={clearFilteredTodoList}>All</p>
+        <p id="active" onClick={() => filterTodoList("to do")}>
           Active
-        </span>
-        <span id="completed" onClick={() => filterTodoList("completed")}>
+        </p>
+        <p id="completed" onClick={() => filterTodoList("completed")}>
           Completed
-        </span>
+        </p>
       </div>
       <p className="items-clear" onClick={clearTodoList}>
         Clear Completed
