@@ -1,6 +1,6 @@
 function TodoFilter({
-  filterTodoList,
-  clearFilteredTodoList,
+  setSelectedFilter,
+  selectedFilter,
   clearTodoList,
   todoCounter,
   theme,
@@ -11,11 +11,17 @@ function TodoFilter({
     >
       <p className="items-left">{todoCounter} items left</p>
       <div className="items-status">
-        <p onClick={clearFilteredTodoList}>All</p>
-        <p id="active" onClick={() => filterTodoList("to do")}>
+        <p onClick={() => setSelectedFilter("all")}>All</p>
+        <p
+          className={selectedFilter === "active" ? "active" : ""}
+          onClick={() => setSelectedFilter("active")}
+        >
           Active
         </p>
-        <p id="completed" onClick={() => filterTodoList("completed")}>
+        <p
+          className={selectedFilter === "completed" ? "active" : ""}
+          onClick={() => setSelectedFilter("completed")}
+        >
           Completed
         </p>
       </div>

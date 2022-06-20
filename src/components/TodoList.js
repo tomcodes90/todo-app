@@ -1,6 +1,7 @@
 import TodoListItem from "./TodoListItem";
 import TodoFilter from "./TodoFilter";
 
+import { useState } from "react";
 import { useDrop } from "react-dnd";
 
 function TodoList({
@@ -8,12 +9,10 @@ function TodoList({
   changeTodoStatus,
   todoList,
   setTodoList,
-  filterTodoList,
-  clearTodoList,
-  clearFilteredTodoList,
   removeTodo,
   theme,
 }) {
+  const [selectedFilter, setSelectedFilter] = useState("all");
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "div",
     drop: (todo) => addImageToBoard(todo.id),
@@ -28,26 +27,29 @@ function TodoList({
   return (
     <div className="todo-items-wrapper">
       <div ref={drop} className="todo-items">
-        {todoList.map((todo) => {
-          return (
-            <TodoListItem
-              key={todo.id}
-              todo={todo}
-              removeIcon={removeIcon}
-              changeTodoStatus={changeTodoStatus}
-              removeTodo={removeTodo}
-              theme={theme}
-            />
-          );
-        })}
+        {todoList
+          .filter(
+            (todo) => selectedFilter === "all" || todo.status === selectedFilter
+          )
+          .map((todo) => {
+            return (
+              <TodoListItem
+                key={todo.id}
+                todo={todo}
+                removeIcon={removeIcon}
+                changeTodoStatus={changeTodoStatus}
+                removeTodo={removeTodo}
+                theme={theme}
+              />
+            );
+          })}
 
         <TodoFilter
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
           theme={theme}
           todoCounter={todoList.length}
           todoList={todoList}
-          filterTodoList={filterTodoList}
-          clearTodoList={clearTodoList}
-          clearFilteredTodoList={clearFilteredTodoList}
         />
       </div>
     </div>

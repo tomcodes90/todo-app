@@ -255,6 +255,9 @@ div:last-child .mobile-todo-info {
   justify-content: center;
   padding: 0px 20px;
 }
+.active {
+  color: hsl(220, 98%, 61%);
+}
 
 .items-status span {
   cursor: pointer;
@@ -271,11 +274,7 @@ div:last-child .mobile-todo-info {
 .items-clear:hover {
   color: hsl(220, 98%, 61%);
 }
-.active {
-  color: hsl(220, 98%, 61%);
-}
-
-.todo-item:hover {
+ì .todo-item:hover {
   transform: translateY(-1px);
   box-shadow: 0 0px 7px 0px hsl(235, 21%, 11%);
   border-color: hsl(235, 24%, 19%);
