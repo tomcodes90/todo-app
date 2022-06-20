@@ -9,8 +9,6 @@ import NewTodo from "./components/NewTodo";
 import TodoList from "./components/TodoList";
 import TodoFilter from "./components/TodoFilter";
 
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 import { useState } from "react";
 
 function App() {
@@ -19,12 +17,12 @@ function App() {
     {
       id: 1,
       value: "Become a web developer",
-      status: "active",
+      isCompleted: false,
     },
     {
       id: 2,
       value: "Clean the House",
-      status: "active",
+      isCompleted: false,
     },
   ]);
 
@@ -43,7 +41,7 @@ function App() {
     if (todoValue !== "") {
       setTodoList([
         ...todoList,
-        { id: todoId, value: todoValue, status: "active" },
+        { id: todoId, value: todoValue, isCompleted: false },
       ]);
     }
   }
@@ -51,10 +49,10 @@ function App() {
     const list = [];
     todoList.forEach((todo) => {
       if (todo.id === completedTodoId) {
-        if (todo.status === "active") {
-          todo.status = "completed";
+        if (!todo.isCompleted) {
+          todo.isCompleted = true;
         } else {
-          todo.status = "active";
+          todo.isCompleted = false;
         }
       }
       list.push(todo);
@@ -66,43 +64,37 @@ function App() {
 
     setTodoList(filteredTodos);
   }
+  function clearCompleted() {
+    const activeTodos = todoList.filter((todo) => todo.isCompleted === false);
+    setTodoList(activeTodos);
+  }
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div
-        className={theme === "dark" ? "main" : "main light"}
-        style={{
-          backgroundColor: theme === "dark" ? "hsl(235, 21%, 11%)" : "",
-        }}
-      >
-        <div className="container">
-          <Header
-            sun={sun}
-            moon={moon}
-            theme={theme}
-            selectTheme={selectTheme}
-          />
-          <NewTodo onAddTodo={handleAddTodo} theme={theme} />
-          <TodoList
+    <div className={theme === "dark" ? "main" : "main light"}>
+      <div className="container">
+        <Header sun={sun} moon={moon} theme={theme} selectTheme={selectTheme} />
+        <NewTodo onAddTodo={handleAddTodo} theme={theme} />
+        <TodoList
+          todoCounter={todoList.length}
+          todoList={todoList}
+          clearCompleted={clearCompleted}
+          setTodoList={setTodoList}
+          removeIcon={removeIcon}
+          changeTodoStatus={changeTodoStatus}
+          removeTodo={removeTodo}
+          theme={theme}
+        />
+        <div className="mobile-todo-info">
+          <TodoFilter
             todoCounter={todoList.length}
             todoList={todoList}
-            setTodoList={setTodoList}
-            removeIcon={removeIcon}
-            changeTodoStatus={changeTodoStatus}
-            removeTodo={removeTodo}
+            clearCompleted={clearCompleted}
             theme={theme}
           />
-          <div className="mobile-todo-info">
-            <TodoFilter
-              todoCounter={todoList.length}
-              todoList={todoList}
-              theme={theme}
-            />
-          </div>
-          <p className="info"> Drag and drop to reorder list</p>
         </div>
+        <p className="info"> Drag and drop to reorder list</p>
       </div>
-    </DndProvider>
+    </div>
   );
 }
 
