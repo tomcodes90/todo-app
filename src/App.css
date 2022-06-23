@@ -119,6 +119,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .todo-remove-icon:hover {
   background-color: rgba(192, 88, 243);
@@ -202,7 +203,7 @@
   border-bottom: 1px solid hsl(237, 14%, 26%);
   cursor: pointer;
   transition: all 0.25s ease;
-  transition-property: box-shadow, transform, border-color;
+  transition-property: box-shadow, border-color;
 }
 .todo-item.light {
   background-color: white;
@@ -249,7 +250,12 @@ div:last-child .mobile-todo-info {
 .todo-items-info.light {
   background-color: white;
 }
-
+.todo-items {
+  background-color: hsl(235, 24%, 19%);
+}
+.todo-items.light {
+  background-color: white;
+}
 .items-status {
   display: flex;
   justify-content: center;
@@ -273,16 +279,6 @@ div:last-child .mobile-todo-info {
 .items-status > *:hover,
 .items-clear:hover {
   color: hsl(220, 98%, 61%);
-}
-ì .todo-item:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 0px 7px 0px hsl(235, 21%, 11%);
-  border-color: hsl(235, 24%, 19%);
-}
-.todo-item.light:hover {
-  transform: none;
-  box-shadow: 0 0px 7px 0px hsl(236, 29%, 84%);
-  border-color: hsl(236, 33%, 92%);
 }
 
 .info {

@@ -27,7 +27,7 @@ function TodoList({
         <Droppable droppableId="todos">
           {(provided) => (
             <div
-              className="todo-items"
+              className={theme === "dark" ? "todo-items" : "todo-items light"}
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
@@ -56,7 +56,6 @@ function TodoList({
                 clearCompleted={clearCompleted}
                 selectedFilter={selectedFilter}
                 setSelectedFilter={setSelectedFilter}
-                theme={theme}
                 todoCounter={todoList.length}
                 todoList={todoList}
               />

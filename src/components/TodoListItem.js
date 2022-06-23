@@ -47,15 +47,12 @@ function TodoListItem({
 
           <div className="todo-remove">
             <div
+              onClick={() => removeTodo(todo.id)}
               className={
                 theme === "dark" ? "todo-remove-icon" : "todo-remove-icon light"
               }
             >
-              <img
-                onClick={() => removeTodo(todo.id)}
-                src={removeIcon}
-                alt="remove icon"
-              />
+              <img src={removeIcon} alt="remove icon" />
             </div>
           </div>
           {provided.placeholder}
