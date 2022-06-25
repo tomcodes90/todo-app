@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import AppContext from "../contexts/AppContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 function TodoFilter({
   setSelectedFilter,
@@ -7,7 +6,7 @@ function TodoFilter({
   clearCompleted,
   todoCounter,
 }) {
-  const { theme } = useContext(AppContext);
+  const { theme } = useTheme();
   return (
     <div
       className={theme === "dark" ? "todo-items-info" : "todo-items-info light"}

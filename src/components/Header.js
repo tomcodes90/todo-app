@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import AppContext from "../contexts/AppContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 function Header() {
-  const { sun, moon, theme, selectTheme } = useContext(AppContext);
+  const { sun, moon, theme, selectTheme } = useTheme();
   return (
     <header className="header">
       <h1 className="title">Todo</h1>

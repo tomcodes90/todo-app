@@ -1,10 +1,7 @@
 import "./App.css";
 
-import sun from "./images/icon-sun.svg";
-import moon from "./images/icon-moon.svg";
 import removeIcon from "./images/icon-cross.svg";
-
-import AppContext from "./contexts/AppContext";
+import { useTheme, ThemeProvider } from "./contexts/ThemeContext";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo";
@@ -14,7 +11,6 @@ import TodoFilter from "./components/TodoFilter";
 import { useState } from "react";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
   const [todoList, setTodoList] = useState([
     {
       id: 1,
@@ -27,14 +23,6 @@ function App() {
       isCompleted: false,
     },
   ]);
-
-  function selectTheme() {
-    if (theme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  }
 
   function handleAddTodo(todoValue) {
     const todoId = Math.floor(Math.random() * 100000000000);
@@ -71,33 +59,32 @@ function App() {
     setTodoList(activeTodos);
   }
 
+  const { theme } = useTheme();
   return (
-    <AppContext.Provider value={{ theme, selectTheme, sun, moon }}>
-      <div className={theme === "dark" ? "main" : "main light"}>
-        <div className="container">
-          <Header />
-          <NewTodo onAddTodo={handleAddTodo} theme={theme} />
-          <TodoList
+    <div className={theme === "dark" ? "main" : "main light"}>
+      <div className="container">
+        <Header />
+        <NewTodo onAddTodo={handleAddTodo} theme={theme} />
+        <TodoList
+          todoCounter={todoList.length}
+          todoList={todoList}
+          clearCompleted={clearCompleted}
+          setTodoList={setTodoList}
+          removeIcon={removeIcon}
+          changeTodoStatus={changeTodoStatus}
+          removeTodo={removeTodo}
+          theme={theme}
+        />
+        <div className="mobile-todo-info">
+          <TodoFilter
             todoCounter={todoList.length}
             todoList={todoList}
             clearCompleted={clearCompleted}
-            setTodoList={setTodoList}
-            removeIcon={removeIcon}
-            changeTodoStatus={changeTodoStatus}
-            removeTodo={removeTodo}
-            theme={theme}
           />
-          <div className="mobile-todo-info">
-            <TodoFilter
-              todoCounter={todoList.length}
-              todoList={todoList}
-              clearCompleted={clearCompleted}
-            />
-          </div>
-          <p className="info"> Drag and drop to reorder list</p>
         </div>
+        <p className="info"> Drag and drop to reorder list</p>
       </div>
-    </AppContext.Provider>
+    </div>
   );
 }
 
