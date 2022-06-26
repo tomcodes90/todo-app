@@ -1,14 +1,31 @@
 import { useState } from "react";
+import { useTheme } from "../contexts/ThemeContext";
+import { useTodoList } from "../contexts/TodoListContext";
 import "../App.css";
 
-function NewTodo({ onAddTodo, theme }) {
+function NewTodo() {
+  const { theme } = useTheme();
+  const { todoList, setTodoList } = useTodoList();
+
   const [inputText, setInputText] = useState("");
+
+  function handleAddTodo(todoValue) {
+    const todoId = Math.floor(Math.random() * 100000000000);
+
+    if (todoValue !== "") {
+      setTodoList([
+        ...todoList,
+        { id: todoId, value: todoValue, isCompleted: false },
+      ]);
+    }
+  }
+
   return (
     <div className={theme === "dark" ? "new-todo" : "new-todo light"}>
       <div className="check">
         <div
           onClick={() => {
-            onAddTodo(inputText);
+            handleAddTodo(inputText);
             setInputText("");
           }}
           className={theme === "dark" ? "check-mark" : "check-mark light"}
@@ -20,7 +37,7 @@ function NewTodo({ onAddTodo, theme }) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onAddTodo(inputText);
+            handleAddTodo(inputText);
             setInputText("");
           }}
         >

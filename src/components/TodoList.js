@@ -1,18 +1,14 @@
 import TodoListItem from "./TodoListItem";
 import TodoFilter from "./TodoFilter";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useState } from "react";
 
-function TodoList({
-  clearCompleted,
-  removeIcon,
-  changeTodoStatus,
-  setTodoList,
-  todoList,
-  removeTodo,
-  theme,
-}) {
-  const [selectedFilter, setSelectedFilter] = useState("all");
+import { useTheme } from "../contexts/ThemeContext";
+import { useTodoList } from "../contexts/TodoListContext";
+
+function TodoList() {
+  const { theme } = useTheme();
+  const { todoList, setTodoList, selectedFilter } = useTodoList();
+
   function HandleOnDragEnd(result) {
     if (!result.destination) return;
     const items = Array.from(todoList);
@@ -44,21 +40,11 @@ function TodoList({
                       index={index}
                       key={todo.id}
                       todo={todo}
-                      removeIcon={removeIcon}
-                      changeTodoStatus={changeTodoStatus}
-                      removeTodo={removeTodo}
-                      theme={theme}
                     />
                   );
                 })}
               {provided.placeholder}
-              <TodoFilter
-                clearCompleted={clearCompleted}
-                selectedFilter={selectedFilter}
-                setSelectedFilter={setSelectedFilter}
-                todoCounter={todoList.length}
-                todoList={todoList}
-              />
+              <TodoFilter />
             </div>
           )}
         </Droppable>

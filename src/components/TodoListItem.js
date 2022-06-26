@@ -1,12 +1,9 @@
-function TodoListItem({
-  Draggable,
-  index,
-  removeIcon,
-  changeTodoStatus,
-  todo,
-  removeTodo,
-  theme,
-}) {
+import { useTheme } from "../contexts/ThemeContext";
+import { useTodoList } from "../contexts/TodoListContext";
+
+function TodoListItem({ Draggable, index, todo }) {
+  const { theme } = useTheme();
+  const { removeIcon, changeTodoStatus, removeTodo } = useTodoList();
   return (
     <Draggable key={todo.id} draggableId={`${todo.id}`} index={index}>
       {(provided) => (

@@ -1,12 +1,9 @@
 import { useTheme } from "../contexts/ThemeContext";
-
-function TodoFilter({
-  setSelectedFilter,
-  selectedFilter,
-  clearCompleted,
-  todoCounter,
-}) {
+import { useTodoList } from "../contexts/TodoListContext";
+function TodoFilter() {
   const { theme } = useTheme();
+  const { setSelectedFilter, selectedFilter, clearCompleted, todoCounter } =
+    useTodoList();
   return (
     <div
       className={theme === "dark" ? "todo-items-info" : "todo-items-info light"}

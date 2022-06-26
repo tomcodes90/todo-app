@@ -86,8 +86,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(./images/icon-check.svg);
-
   background: linear-gradient(
         135deg,
         rgba(85, 221, 255) 0%,
@@ -126,13 +124,6 @@
 }
 .todo-remove-icon.light:hover {
   background-color: rgba(85, 221, 255);
-}
-.check-mark img {
-  visibility: hidden;
-}
-
-.check-mark.checked img {
-  visibility: visible;
 }
 
 .check-mark:hover {
@@ -231,6 +222,7 @@
   overflow: hidden;
 }
 .todo-items-info > * {
+  font-weight: 700;
   font-size: 0.8em;
 }
 .items-left {
@@ -244,7 +236,7 @@
   font-size: 1em;
   cursor: pointer;
 }
-div:last-child .mobile-todo-info {
+.mobile-todo-info {
   display: none;
 }
 .todo-items-info.light {
@@ -287,7 +279,7 @@ div:last-child .mobile-todo-info {
   font-size: 0.9em;
   color: hsl(233, 14%, 35%);
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   #root {
     min-width: 400px;
   }
@@ -301,14 +293,15 @@ div:last-child .mobile-todo-info {
   .main.light {
     background-image: url(./images/bg-mobile-light.jpg);
   }
-  div:last-child .mobile-todo-info {
+  .mobile-todo-info {
     display: flex;
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.4);
   }
   .items-status > * {
-    font-weight: 700;
+    padding: 0px 10px;
+    font-size: 1.2em;
   }
   .items-left {
     padding-right: 150px;
@@ -325,10 +318,6 @@ div:last-child .mobile-todo-info {
     display: none;
   }
 
-  .todo-items-wrapper .todo-items-info {
-    display: flex;
-  }
-
   .todo-items-wrapper .todo-items-info .items-left {
     display: flex;
   }
@@ -336,7 +325,6 @@ div:last-child .mobile-todo-info {
   .todo-items-wrapper .todo-items-info .items-status {
     display: none;
   }
-
   .todo-items-wrapper .todo-items-info .items-clear {
     display: flex;
   }
