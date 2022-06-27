@@ -1,7 +1,9 @@
 import { useTheme } from "../contexts/ThemeContext";
 import { useTodoList } from "../contexts/TodoListContext";
 
-function TodoListItem({ Draggable, index, todo }) {
+import "./Todo.css";
+
+function Todo({ Draggable, index, todo }) {
   const { theme } = useTheme();
   const { removeIcon, changeTodoStatus, removeTodo } = useTodoList();
   return (
@@ -59,4 +61,4 @@ function TodoListItem({ Draggable, index, todo }) {
   );
 }
 
-export default TodoListItem;
+export default Todo;

@@ -5,9 +5,9 @@ import { useTheme } from "./contexts/ThemeContext";
 import { TodoListProvider } from "./contexts/TodoListContext";
 
 import Header from "./components/Header";
-import NewTodo from "./components/NewTodo";
+import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
-import TodoFilter from "./components/TodoFilter";
+import StatusAndFilter from "./components/StatusAndFilter";
 
 function App() {
   const { theme } = useTheme();
@@ -16,10 +16,10 @@ function App() {
       <div className="container">
         <Header />
         <TodoListProvider>
-          <NewTodo />
+          <TodoInput />
           <TodoList />
           <div className="mobile-todo-info">
-            <TodoFilter />
+            <StatusAndFilter />
           </div>
         </TodoListProvider>
         <p className="info"> Drag and drop to reorder list</p>

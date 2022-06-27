@@ -1,0 +1,41 @@
+.todo-item {
+  width: 100%;
+  height: 70px;
+  background-color: hsl(235, 24%, 19%);
+  display: flex;
+  border-bottom: 1px solid hsl(237, 14%, 26%);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  transition-property: box-shadow, border-color;
+}
+
+.todo-item.light {
+  background-color: white;
+  border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+
+.todo-remove {
+  padding-right: 15px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.todo-remove-icon {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.todo-remove-icon:hover {
+  background-color: rgba(192, 88, 243);
+}
+
+.todo-remove-icon.light:hover {
+  background-color: rgba(85, 221, 255);
+}

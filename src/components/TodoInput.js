@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useTheme } from "../contexts/ThemeContext";
 import { useTodoList } from "../contexts/TodoListContext";
-import "../App.css";
+import "./TodoInput.css";
 
-function NewTodo() {
+function TodoInput() {
   const { theme } = useTheme();
   const { todoList, setTodoList } = useTodoList();
 
@@ -58,4 +58,4 @@ function NewTodo() {
   );
 }
 
-export default NewTodo;
+export default TodoInput;

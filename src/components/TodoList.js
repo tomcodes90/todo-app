@@ -1,5 +1,8 @@
-import TodoListItem from "./TodoListItem";
-import TodoFilter from "./TodoFilter";
+import "./TodoList.css";
+
+import Todo from "./Todo";
+import StatusAndFilter from "./StatusAndFilter";
+
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import { useTheme } from "../contexts/ThemeContext";
@@ -35,7 +38,7 @@ function TodoList() {
                 )
                 .map((todo, index) => {
                   return (
-                    <TodoListItem
+                    <Todo
                       Draggable={Draggable}
                       index={index}
                       key={todo.id}
@@ -44,7 +47,7 @@ function TodoList() {
                   );
                 })}
               {provided.placeholder}
-              <TodoFilter />
+              <StatusAndFilter />
             </div>
           )}
         </Droppable>

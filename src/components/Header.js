@@ -1,4 +1,5 @@
 import { useTheme } from "../contexts/ThemeContext";
+import "./Header.css";
 
 function Header() {
   const { sun, moon, theme, selectTheme } = useTheme();

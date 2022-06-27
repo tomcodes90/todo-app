@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+}
+.header img {
+  cursor: pointer;
+}
+
+.title {
+  color: white;
+  letter-spacing: 10px;
+  font-size: 2em;
+  font-weight: bold;
+}

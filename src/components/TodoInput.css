@@ -1,0 +1,28 @@
+.new-todo-input {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.new-todo-input-text {
+  width: 100%;
+  padding: 10px 0px;
+  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: hsl(234, 39%, 85%);
+}
+.new-todo-input-text.light {
+  color: hsl(235, 19%, 35%);
+}
+
+.new-todo-input form {
+  flex-grow: 1;
+  display: flex;
+}
+
+.new-todo-input input::placeholder {
+  color: hsl(233, 14%, 35%);
+  font-size: 18px;
+}

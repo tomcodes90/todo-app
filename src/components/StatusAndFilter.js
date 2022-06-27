@@ -1,6 +1,8 @@
+import "./StatusAndFilter.css";
+
 import { useTheme } from "../contexts/ThemeContext";
 import { useTodoList } from "../contexts/TodoListContext";
-function TodoFilter() {
+function StatusAndFilter() {
   const { theme } = useTheme();
   const { setSelectedFilter, selectedFilter, clearCompleted, todoCounter } =
     useTodoList();
@@ -31,4 +33,4 @@ function TodoFilter() {
   );
 }
 
-export default TodoFilter;
+export default StatusAndFilter;
