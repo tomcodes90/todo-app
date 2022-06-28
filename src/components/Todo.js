@@ -9,27 +9,29 @@ function Todo({ Draggable, index, todo }) {
   return (
     <Draggable key={todo.id} draggableId={`${todo.id}`} index={index}>
       {(provided) => (
-        <div
+        <section
           className={theme === "dark" ? "todo-item" : "todo-item light"}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
         >
-          <div onClick={() => changeTodoStatus(todo.id)} className="check">
-            <div
-              className={
-                theme === "dark"
-                  ? todo.isCompleted === true
-                    ? "check-mark-checked"
-                    : "check-mark"
-                  : todo.isCompleted === true
+          <button
+            onClick={() => changeTodoStatus(todo.id)}
+            className={
+              theme === "dark"
+                ? todo.isCompleted === true
                   ? "check-mark-checked"
-                  : "check-mark light"
-              }
-            >
-              <p className={todo.isCompleted === true ? "mark" : ""}></p>
-            </div>
-          </div>
+                  : "check-mark"
+                : todo.isCompleted === true
+                ? "check-mark-checked"
+                : "check-mark light"
+            }
+          >
+            <figure
+              className={todo.isCompleted === true ? "mark" : ""}
+            ></figure>
+          </button>
+
           <p
             className={
               theme === "dark"
@@ -44,18 +46,18 @@ function Todo({ Draggable, index, todo }) {
             {todo.value}
           </p>
 
-          <div className="todo-remove">
-            <div
-              onClick={() => removeTodo(todo.id)}
-              className={
-                theme === "dark" ? "todo-remove-icon" : "todo-remove-icon light"
-              }
-            >
-              <img src={removeIcon} alt="remove icon" />
-            </div>
-          </div>
+          <input
+            onClick={() => removeTodo(todo.id)}
+            className={
+              theme === "dark" ? "todo-remove-icon" : "todo-remove-icon light"
+            }
+            type="image"
+            src={removeIcon}
+            alt="remove icon"
+          />
+
           {provided.placeholder}
-        </div>
+        </section>
       )}
     </Draggable>
   );

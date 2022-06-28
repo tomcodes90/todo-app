@@ -25,7 +25,7 @@ function TodoList() {
       <DragDropContext onDragEnd={HandleOnDragEnd}>
         <Droppable droppableId="todos">
           {(provided) => (
-            <div
+            <section
               className={theme === "dark" ? "todo-items" : "todo-items light"}
               {...provided.droppableProps}
               ref={provided.innerRef}
@@ -48,7 +48,7 @@ function TodoList() {
                 })}
               {provided.placeholder}
               <StatusAndFilter />
-            </div>
+            </section>
           )}
         </Droppable>
       </DragDropContext>

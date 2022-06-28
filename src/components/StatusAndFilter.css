@@ -11,14 +11,15 @@
 }
 
 .items-left {
-  padding-right: 60px;
+  padding-right: 30px;
 }
 
 .items-clear {
-  padding-left: 60px;
+  padding-left: 30px;
 }
 
 .items-status > * {
+  color: hsl(233, 14%, 35%);
   padding: 0px 6px;
   font-size: 1em;
   cursor: pointer;
@@ -61,6 +62,9 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .container {
+    width: 80%;
+  }
   .mobile-todo-info {
     display: flex;
     border-radius: 6px;

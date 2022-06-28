@@ -7,29 +7,29 @@ function StatusAndFilter() {
   const { setSelectedFilter, selectedFilter, clearCompleted, todoCounter } =
     useTodoList();
   return (
-    <div
+    <section
       className={theme === "dark" ? "todo-items-info" : "todo-items-info light"}
     >
       <p className="items-left">{todoCounter} items left</p>
-      <div className="items-status">
-        <p onClick={() => setSelectedFilter("all")}>All</p>
-        <p
+      <section className="items-status">
+        <button onClick={() => setSelectedFilter("all")}>All</button>
+        <button
           className={!selectedFilter ? "active" : ""}
           onClick={() => setSelectedFilter(false)}
         >
           Active
-        </p>
-        <p
+        </button>
+        <button
           className={selectedFilter !== "all" && selectedFilter ? "active" : ""}
           onClick={() => setSelectedFilter(true)}
         >
           Completed
-        </p>
-      </div>
-      <p className="items-clear" onClick={clearCompleted}>
+        </button>
+      </section>
+      <section className="items-clear" onClick={clearCompleted}>
         Clear Completed
-      </p>
-    </div>
+      </section>
+    </section>
   );
 }
 

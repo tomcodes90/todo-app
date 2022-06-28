@@ -21,40 +21,36 @@ function TodoInput() {
   }
 
   return (
-    <div className={theme === "dark" ? "new-todo" : "new-todo light"}>
-      <div className="check">
-        <div
-          onClick={() => {
-            handleAddTodo(inputText);
-            setInputText("");
-          }}
-          className={theme === "dark" ? "check-mark" : "check-mark light"}
-        ></div>
-      </div>
-      <div
+    <section className={theme === "dark" ? "new-todo" : "new-todo light"}>
+      <button
+        onClick={() => {
+          handleAddTodo(inputText);
+          setInputText("");
+        }}
+        className={theme === "dark" ? "check-mark" : "check-mark light"}
+      ></button>
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAddTodo(inputText);
+          setInputText("");
+        }}
         className={theme === "dark" ? "new-todo-input" : "new-todo-input light"}
       >
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleAddTodo(inputText);
-            setInputText("");
-          }}
-        >
-          <input
-            className={
-              theme === "dark"
-                ? "new-todo-input-text"
-                : "new-todo-input-text light"
-            }
-            type="text"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            placeholder="Create a new todo..."
-          />
-        </form>
-      </div>
-    </div>
+        <input
+          className={
+            theme === "dark"
+              ? "new-todo-input-text"
+              : "new-todo-input-text light"
+          }
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder="Create a new todo..."
+        />
+      </form>
+    </section>
   );
 }
 

@@ -1,12 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 18px;
-}
-
-.main {
+main {
   background-image: url(./images/bg-desktop-dark.jpg);
   background-repeat: no-repeat;
   background-size: 100% 35vh;
@@ -24,15 +16,7 @@
 
 .container {
   margin-top: 75px;
-  max-width: 90%;
-  height: 100vh;
-}
-
-.check {
-  flex-basis: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
 }
 
 .check-mark {
@@ -44,7 +28,8 @@
   transition: all 0.25s;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-self: center;
+  margin: auto 20px;
 }
 .check-mark.light {
   border: 2px solid hsl(236, 33%, 92%);
@@ -57,6 +42,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-self: center;
   align-items: center;
   background: linear-gradient(
         135deg,
@@ -66,13 +52,14 @@
       padding-box,
     linear-gradient(135deg, rgba(85, 221, 255) 0%, rgba(192, 88, 243) 100%)
       border-box;
+  margin: auto 20px;
 }
 .mark {
   background-image: url(./images/icon-check.svg);
   background-repeat: no-repeat;
   background-position: center;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
 }
 
 .check-mark:hover {
@@ -90,7 +77,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .main {
+  main {
     background-image: url(./images/bg-mobile-dark.jpg);
     background-size: 100% 270px;
   }

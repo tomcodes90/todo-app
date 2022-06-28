@@ -12,7 +12,7 @@ import StatusAndFilter from "./components/StatusAndFilter";
 function App() {
   const { theme } = useTheme();
   return (
-    <div className={theme === "dark" ? "main" : "main light"}>
+    <main className={theme === "dark" ? "" : "main light"}>
       <div className="container">
         <Header />
         <TodoListProvider>
@@ -24,7 +24,7 @@ function App() {
         </TodoListProvider>
         <p className="info"> Drag and drop to reorder list</p>
       </div>
-    </div>
+    </main>
   );
 }
 

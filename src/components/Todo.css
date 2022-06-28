@@ -3,6 +3,7 @@
   height: 70px;
   background-color: hsl(235, 24%, 19%);
   display: flex;
+  flex-wrap: wrap;
   border-bottom: 1px solid hsl(237, 14%, 26%);
   cursor: pointer;
   transition: all 0.25s ease;
@@ -14,20 +15,14 @@
   border-bottom: 1px solid hsl(236, 33%, 92%);
 }
 
-.todo-remove {
-  padding-right: 15px;
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .todo-remove-icon {
   border-radius: 50%;
+  margin-right: 20px;
   width: 30px;
   height: 30px;
   display: flex;
-  justify-content: center;
+  margin-left: auto;
+  align-self: center;
   align-items: center;
   cursor: pointer;
 }
