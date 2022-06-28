@@ -88,6 +88,7 @@
   .todo-items-wrapper .todo-items-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    font-size: 0.9em;
   }
 
   .todo-items-wrapper .todo-items-info .items-left {
