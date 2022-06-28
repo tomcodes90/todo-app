@@ -76,7 +76,9 @@
   .todo-items-info .items-left {
     display: none;
   }
-
+  .items-clear:hover {
+    color: inherit;
+  }
   .todo-items-info .items-status {
     flex: 1;
   }

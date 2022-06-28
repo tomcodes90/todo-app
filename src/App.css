@@ -97,4 +97,13 @@
   .main.light {
     background-image: url(./images/bg-mobile-light.jpg);
   }
+  .check-mark:hover,
+  .check-mark.light:hover {
+    background: transparent;
+    border-radius: 50%;
+    border: 2px solid hsl(237, 14%, 26%);
+  }
+  .check-mark.light:hover {
+    border: 2px solid hsl(236, 33%, 92%);
+  }
 }
