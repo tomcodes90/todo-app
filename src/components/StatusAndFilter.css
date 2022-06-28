@@ -86,11 +86,12 @@
   }
 
   .todo-items-wrapper .todo-items-info {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .todo-items-wrapper .todo-items-info .items-left {
-    display: flex;
+    display: grid;
   }
 
   .todo-items-wrapper .todo-items-info .items-status {
@@ -98,6 +99,6 @@
   }
 
   .todo-items-wrapper .todo-items-info .items-clear {
-    display: flex;
+    display: grid;
   }
 }
