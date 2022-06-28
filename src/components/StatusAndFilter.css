@@ -87,12 +87,13 @@
 
   .todo-items-wrapper .todo-items-info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 2fr;
   }
 
   .todo-items-wrapper .todo-items-info .items-left {
     display: grid;
     font-size: 0.9em;
+    padding: 0px;
   }
 
   .todo-items-wrapper .todo-items-info .items-status {
