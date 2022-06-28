@@ -88,11 +88,11 @@
   .todo-items-wrapper .todo-items-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    font-size: 0.9em;
   }
 
   .todo-items-wrapper .todo-items-info .items-left {
     display: grid;
+    font-size: 0.9em;
   }
 
   .todo-items-wrapper .todo-items-info .items-status {
@@ -101,5 +101,6 @@
 
   .todo-items-wrapper .todo-items-info .items-clear {
     display: grid;
+    font-size: 0.9em;
   }
 }
