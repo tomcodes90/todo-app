@@ -4,18 +4,7 @@ import removeIcon from "../images/icon-cross.svg";
 const TodoListContext = createContext({});
 
 export const TodoListProvider = ({ children }) => {
-  const [todoList, setTodoList] = useState([
-    {
-      id: 1,
-      value: "Become a web developer",
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      value: "Clean the House",
-      isCompleted: false,
-    },
-  ]);
+  const [todoList, setTodoList] = useState([]);
 
   const [selectedFilter, setSelectedFilter] = useState("all");
 
