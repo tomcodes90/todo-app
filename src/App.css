@@ -1,4 +1,15 @@
-.main.light {
+.main-container {
+  background-image: url(./images/bg-desktop-dark.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 35vh;
+  background-color: hsl(235, 21%, 11%);
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  justify-content: center;
+}
+
+.main-container.light {
   background-image: url(./images/bg-desktop-light.jpg);
   background-color: white;
 }
@@ -64,13 +75,22 @@
     linear-gradient(135deg, rgba(85, 221, 255) 0%, rgba(192, 88, 243) 100%)
       border-box;
 }
+.screen_reader_only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  overflow: hidden !important;
+}
 
 @media only screen and (max-width: 800px) {
-  main {
+  .main-container {
     background-image: url(./images/bg-mobile-dark.jpg);
     background-size: 100% 270px;
   }
-  .main.light {
+  .main-container.light {
     background-image: url(./images/bg-mobile-light.jpg);
   }
   .check-mark:hover,

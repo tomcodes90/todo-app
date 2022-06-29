@@ -21,7 +21,7 @@ function TodoList() {
   }
 
   return (
-    <div className="todo-items-wrapper">
+    <main className="todo-items-wrapper">
       <DragDropContext onDragEnd={HandleOnDragEnd}>
         <Droppable droppableId="todos">
           {(provided) => (
@@ -52,7 +52,7 @@ function TodoList() {
           )}
         </Droppable>
       </DragDropContext>
-    </div>
+    </main>
   );
 }
 

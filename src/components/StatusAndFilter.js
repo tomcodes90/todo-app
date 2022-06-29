@@ -12,14 +12,18 @@ function StatusAndFilter() {
     >
       <p className="items-left">{todoCounter} items left</p>
       <section className="items-status">
-        <button onClick={() => setSelectedFilter("all")}>All</button>
+        <button type="button" onClick={() => setSelectedFilter("all")}>
+          All
+        </button>
         <button
+          type="button"
           className={!selectedFilter ? "active" : ""}
           onClick={() => setSelectedFilter(false)}
         >
           Active
         </button>
         <button
+          type="button"
           className={selectedFilter !== "all" && selectedFilter ? "active" : ""}
           onClick={() => setSelectedFilter(true)}
         >

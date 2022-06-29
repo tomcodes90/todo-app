@@ -16,6 +16,7 @@ function Todo({ Draggable, index, todo }) {
           ref={provided.innerRef}
         >
           <button
+            type="button"
             onClick={() => changeTodoStatus(todo.id)}
             className={
               theme === "dark"
@@ -45,7 +46,9 @@ function Todo({ Draggable, index, todo }) {
           >
             {todo.value}
           </p>
-
+          <label htmlFor="input" className="screen_reader_only">
+            Button to remove a todo from the list
+          </label>
           <input
             onClick={() => removeTodo(todo.id)}
             className={

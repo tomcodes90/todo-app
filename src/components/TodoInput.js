@@ -23,6 +23,7 @@ function TodoInput() {
   return (
     <section className={theme === "dark" ? "new-todo" : "new-todo light"}>
       <button
+        type="button"
         onClick={() => {
           handleAddTodo(inputText);
           setInputText("");
@@ -38,6 +39,9 @@ function TodoInput() {
         }}
         className={theme === "dark" ? "new-todo-input" : "new-todo-input light"}
       >
+        <label htmlFor="input" className="screen_reader_only">
+          Text field to fill with a new todo task
+        </label>
         <input
           className={
             theme === "dark"
