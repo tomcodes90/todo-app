@@ -12,7 +12,9 @@ import StatusAndFilter from "./components/StatusAndFilter";
 function App() {
   const { theme } = useTheme();
   return (
-    <main className={theme === "dark" ? "main-container" : "main light"}>
+    <main
+      className={theme === "dark" ? "main-container" : "main-container light"}
+    >
       <div className="container">
         <Header />
         <TodoListProvider>
